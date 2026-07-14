@@ -1,0 +1,13 @@
+{
+  "name": "career-prep-hub-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static frontend for Career Prep Hub",
+  "scripts": {
+    "start": "live-server . --port=5500 --open=pages/home.html --no-browser",
+    "dev": "live-server . --port=5500 --open=pages/home.html --no-browser"
+  },
+  "dependencies": {
+    "live-server": "^1.2.2"
+  }
+}

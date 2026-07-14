@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-signin-client_id" content="742354145040-3ij69i038qntjdjn6c6r31e22hhuulvs.apps.googleusercontent.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="../assets/css/navbar-logo.css">
   <link rel="stylesheet" href="../assets/css/login.css">
@@ -46,71 +47,126 @@
 
       <form id="signupForm" novalidate>
         <div class="grid-2">
-          <div>
+          <div class="field-group">
             <label for="firstname">First Name <span class="required">*</span></label>
             <input type="text" id="firstname" name="firstname" required>
+            <small class="field-error" id="firstnameError"></small>
           </div>
-          <div>
+          <div class="field-group">
             <label for="middlename">Middle Name (Optional)</label>
             <input type="text" id="middlename" name="middlename">
+            <small class="field-error" id="middlenameError"></small>
           </div>
         </div>
 
         <div class="grid-2">
-          <div>
+          <div class="field-group">
             <label for="lastname">Last Name <span class="required">*</span></label>
             <input type="text" id="lastname" name="lastname" required>
+            <small class="field-error" id="lastnameError"></small>
           </div>
-          <div>
+          <div class="field-group">
             <label for="dob">Date of Birth <span class="required">*</span></label>
             <input type="date" id="dob" name="dob" required>
+            <small class="field-error" id="dobError"></small>
           </div>
         </div>
 
-        <label for="username">Username <span class="required">*</span></label>
-        <input type="text" id="username" name="username" placeholder="your_username" required>
-
-        <label for="email">Email <span class="required">*</span></label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required>
-
-        <label for="password">Password <span class="required">*</span></label>
-        <div class="password-wrapper">
-          <input type="password" id="password" name="password" placeholder="********" required>
-          <button type="button" class="icon-btn" id="togglePassword" aria-label="Toggle password visibility">
-            <i class="fas fa-eye"></i>
-          </button>
+        <div class="field-group">
+          <label for="username">Username <span class="required">*</span></label>
+          <input type="text" id="username" name="username" placeholder="your_username" required>
+          <small class="field-error" id="usernameError"></small>
         </div>
 
-        <label for="confirmPassword">Re-confirm Password <span class="required">*</span></label>
-        <div class="password-wrapper">
-          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="********" required>
-          <button type="button" class="icon-btn" id="toggleConfirmPassword" aria-label="Toggle confirm password visibility">
-            <i class="fas fa-eye"></i>
-          </button>
+        <div class="field-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <div class="verify-row">
+            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            <button type="button" class="secondary-btn verify-btn" id="verifyEmailBtn">Verify</button>
+          </div>
+          <small class="field-error" id="emailError"></small>
+          <p class="verification-status" id="emailVerificationStatus"></p>
+        </div>
+
+        <div class="otp-panel hidden" id="signupOtpPanel">
+          <div class="field-group">
+            <label for="signupOtp">Enter OTP <span class="required">*</span></label>
+            <div class="verify-row">
+              <input type="text" id="signupOtp" name="signupOtp" placeholder="Enter 6-digit OTP" inputmode="numeric" maxlength="6">
+              <button type="button" class="secondary-btn verify-btn" id="verifyOtpBtn">Verify OTP</button>
+            </div>
+            <small class="field-error" id="signupOtpError"></small>
+            <p class="verification-status" id="otpVerificationStatus"></p>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="phone">Phone Number <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="1234567890" required>
+          <small class="field-error" id="phoneError"></small>
+        </div>
+
+        <div class="field-group">
+          <label for="password">Password <span class="required">*</span></label>
+          <div class="password-wrapper">
+            <input type="password" id="password" name="password" placeholder="********" required>
+            <button type="button" class="icon-btn" id="togglePassword" aria-label="Toggle password visibility">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <small class="field-error" id="passwordError"></small>
+        </div>
+        <div class="password-checklist compact-checklist" id="passwordChecklist" aria-live="polite">
+          <span id="ruleLength" class="invalid">At least 8 characters</span><br>
+          <span id="ruleUpper" class="invalid">One uppercase letter</span><br>
+          <span id="ruleLower" class="invalid">One lowercase letter</span><br>
+          <span id="ruleNumber" class="invalid">One number</span><br>
+          <span id="ruleSpecial" class="invalid">One special character</span>
+        </div>
+
+        <div class="field-group">
+          <label for="confirmPassword">Re-confirm Password <span class="required">*</span></label>
+          <div class="password-wrapper">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="********" required>
+            <button type="button" class="icon-btn" id="toggleConfirmPassword" aria-label="Toggle confirm password visibility">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+          <small class="field-error" id="confirmPasswordError"></small>
         </div>
 
         <div class="grid-2">
-          <div>
+          <div class="field-group">
             <label for="nationality">Nationality <span class="required">*</span></label>
             <select id="nationality" name="nationality" required>
               <option value="">Select</option>
               <option value="Indian">Indian</option>
               <option value="NRI">NRI</option>
             </select>
+            <small class="field-error" id="nationalityError"></small>
           </div>
-          <div>
+          <div class="field-group">
             <label for="status">Status <span class="required">*</span></label>
             <select id="status" name="status" required>
               <option value="Student">Student</option>
               <option value="Employed">Employed</option>
               <option value="Unemployed">Unemployed</option>
             </select>
+            <small class="field-error" id="statusError"></small>
           </div>
         </div>
 
         <button type="submit" class="primary-btn">Create Account</button>
         <p class="feedback" id="signupFeedback"></p>
       </form>
+
+      <div class="auth-divider"><span>or</span></div>
+      <button type="button" class="google-btn" id="googleSignupBtn">
+        <i class="fa-brands fa-google"></i>
+        Continue with Google
+      </button>
+      <div id="googleSignupMount" class="google-mount" aria-hidden="true"></div>
+      <p class="google-note">If the email already exists, we sign you in instead of creating a duplicate account.</p>
 
       <p class="switch-text">
         Already have an account?
@@ -121,6 +177,8 @@
   </div>
 
   <script src="../assets/js/navbar-logo.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="../assets/js/auth-common.js"></script>
   <script src="../assets/js/signup.js"></script>
 </body>
 </html>

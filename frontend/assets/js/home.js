@@ -202,6 +202,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // Hero section animation
   const heroContent = document.querySelector('.hero-content');
   const heroImage = document.querySelector('.hero-image');
+  const typingText = document.getElementById('typing-text');
+  const codeTyping = document.getElementById('code-typing');
+  const codeLines = document.getElementById('code-lines');
 
   if (heroContent && heroImage) {
     heroContent.style.opacity = '0';
@@ -220,19 +223,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Start typing animation after hero content appears
       setTimeout(() => {
-        startTypingAnimation();
+        startSubtitleTypingAnimation();
+        startCodeEditorAnimation();
       }, 800);
     }, 100);
   }
 
-  // Typing animation function
-  function startTypingAnimation() {
-    const typingText = document.getElementById('typing-text');
+  function escapeHtml(value) {
+    return value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  // Subheading typing animation
+  function startSubtitleTypingAnimation() {
+    if (!typingText) return;
+
+    const subtitleContainer = document.querySelector('.hero-subtitle-container');
+
     const quotes = [
-      "Build the skills that shape your future career.",
-      "Practice with purpose. Prepare for success."
+      'Practice with purpose. Prepare for success.',
+      'Build skills that get you hired.',
+      'Crack your next tech interview.'
     ];
-    
+
+    // Width is controlled by CSS (--hero-typing-width: 48ch) — stable across all quotes.
+
+
     let quoteIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
@@ -269,13 +287,98 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       // Adjust typing speed
-      const typingSpeed = isDeleting ? 40 : (Math.random() * 80 + 40);
+      const typingSpeed = isDeleting ? 30 : 52;
       setTimeout(typeWriter, typingSpeed);
     }
 
-    // Start the typing animation
     typeWriter();
   }
+
+  // Fake live coding editor animation
+  function startCodeEditorAnimation() {
+    if (!codeTyping || !codeLines) return;
+
+    const codeString = [
+      'public class Career {',
+      '    public static void main(String[] args) {',
+      '        System.out.println("Prepare. Practice. Succeed.");',
+      '    }',
+      '}'
+    ].join('\n');
+
+    const lineCount = codeString.split('\n').length;
+    codeLines.innerHTML = Array.from({ length: lineCount }, (_, index) => `<div>${index + 1}</div>`).join('');
+
+    const tokenRules = [
+      { type: 'string', regex: /^"[^"\\]*(?:\\.[^"\\]*)*"/ },
+      { type: 'keyword', regex: /^(public|class|static|void)\b/ },
+      { type: 'class-name', regex: /^Career\b/ },
+      { type: 'method', regex: /^(main|println)\b/ },
+      { type: 'type', regex: /^String\b/ },
+      { type: 'variable', regex: /^args\b/ },
+      { type: 'punctuation', regex: /^[.(){}\[\];,]/ }
+    ];
+
+    const renderCode = (text) => {
+      let remaining = text;
+      let html = '';
+
+      while (remaining.length > 0) {
+        let matched = false;
+
+        for (const { type, regex } of tokenRules) {
+          const match = remaining.match(regex);
+          if (match) {
+            html += `<span class="code-token ${type}">${escapeHtml(match[0])}</span>`;
+            remaining = remaining.slice(match[0].length);
+            matched = true;
+            break;
+          }
+        }
+
+        if (!matched) {
+          html += escapeHtml(remaining[0]);
+          remaining = remaining.slice(1);
+        }
+      }
+
+      codeTyping.innerHTML = `${html}<span class="code-token cursor">|</span>`;
+    };
+
+    let index = 0;
+    let deleting = false;
+
+    function tick() {
+      const visibleText = deleting
+        ? codeString.slice(0, index)
+        : codeString.slice(0, index + 1);
+
+      renderCode(visibleText);
+
+      if (!deleting) {
+        index += 1;
+        if (index >= codeString.length) {
+          deleting = true;
+          setTimeout(tick, 1800);
+          return;
+        }
+      } else {
+        index -= 1;
+        if (index <= 0) {
+          deleting = false;
+          index = 0;
+          setTimeout(tick, 550);
+          return;
+        }
+      }
+
+      const delay = deleting ? 18 : codeString[index] === '\n' ? 180 : 42;
+      setTimeout(tick, delay);
+    }
+
+    tick();
+  }
+
   const stats = document.querySelectorAll('.stat h3');
   const statsObserver = new IntersectionObserver(function(entries) {
     entries.forEach(entry => {

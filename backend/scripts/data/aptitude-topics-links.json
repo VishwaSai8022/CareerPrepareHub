@@ -1,626 +1,128 @@
 {
-  "Percentages": {
-    "Telugu": {
-      "channel": "Maths By Sarada",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Maths%20By%20Sarada%20Percentages%20Telugu%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Abhinay Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Abhinay%20Maths%20Percentages%20complete%20Hindi%20aptitude"
-    },
-    "Tamil": {
-      "channel": "Suresh Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Suresh%20Maths%20Percentages%20Tamil%20aptitude"
+  "Percentage": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Percentage",
+      "link": "https://www.youtube.com/watch?v=RWdNhJWwzSs"
     }
   },
   "Profit and Loss": {
-    "Telugu": {
-      "channel": "Maths By Sarada",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Maths%20By%20Sarada%20Profit%20Loss%20Telugu%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Abhinay Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Abhinay%20Maths%20Profit%20and%20Loss%20complete%20Hindi"
-    },
-    "Tamil": {
-      "channel": "Suresh Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Suresh%20Maths%20Profit%20Loss%20Tamil%20aptitude"
+    "English": {
+      "channel": "YouTube",
+      "title": "Profit and Loss",
+      "link": "https://www.youtube.com/watch?v=T2odvmxqi1I"
     }
   },
   "Ratio and Proportion": {
-    "Telugu": {
-      "channel": "TechBit Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=TechBit%20Telugu%20Ratio%20Proportion%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Gagan Pratap Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Gagan%20Pratap%20Ratio%20Proportion%20complete%20Hindi"
-    },
-    "Tamil": {
-      "channel": "Kalvi TV",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Kalvi%20TV%20Ratio%20Proportion%20Tamil%20maths"
+    "English": {
+      "channel": "YouTube",
+      "title": "Ratio and Proportion",
+      "link": "https://www.youtube.com/watch?v=jfoJBivWlnQ"
     }
   },
-  "Simple & Compound Interest": {
-    "Telugu": {
-      "channel": "Maths By Sarada",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Maths%20By%20Sarada%20Simple%20Compound%20Interest%20Telugu"
-    },
-    "Hindi": {
-      "channel": "Abhinay Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Abhinay%20Maths%20Simple%20Compound%20Interest%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "Suresh Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Suresh%20Maths%20Simple%20Compound%20Interest%20Tamil"
-    }
-  },
-  "Averages": {
-    "Telugu": {
-      "channel": "Maths By Sarada",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Maths%20By%20Sarada%20Averages%20Telugu%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Gagan Pratap Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Gagan%20Pratap%20Averages%20Hindi%20complete%20class"
-    },
-    "Tamil": {
-      "channel": "YP Maths Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=YP%20Maths%20Tamil%20Averages%20aptitude"
+  "Average": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Average",
+      "link": "https://www.youtube.com/watch?v=tqr73VVI0xk"
     }
   },
   "Time and Work": {
-    "Telugu": {
-      "channel": "Competitive Reasoning Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Competitive%20Reasoning%20Telugu%20Time%20Work%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Abhinay Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Abhinay%20Maths%20Time%20and%20Work%20Hindi%20complete%20tricks"
-    },
-    "Tamil": {
-      "channel": "Suresh Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Suresh%20Maths%20Time%20Work%20Tamil%20aptitude"
+    "English": {
+      "channel": "YouTube",
+      "title": "Time and Work",
+      "link": "https://www.youtube.com/watch?v=KE7tQf9spPg"
     }
   },
-  "Time, Speed and Distance": {
-    "Telugu": {
-      "channel": "Maths By Sarada",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Maths%20By%20Sarada%20Time%20Speed%20Distance%20Telugu"
-    },
-    "Hindi": {
-      "channel": "Gagan Pratap Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Gagan%20Pratap%20Time%20Speed%20Distance%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "YP Maths Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=YP%20Maths%20Tamil%20Time%20Speed%20Distance%20aptitude"
+  "Speed, Distance and Time": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Speed, Distance and Time",
+      "link": "https://www.youtube.com/watch?v=jzNxXm5twx4"
     }
   },
   "Number System": {
-    "Telugu": {
-      "channel": "TechBit Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=TechBit%20Telugu%20Number%20System%20aptitude%20complete"
-    },
-    "Hindi": {
-      "channel": "Abhinay Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Abhinay%20Maths%20Number%20System%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "Kalvi TV",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Kalvi%20TV%20Number%20System%20Tamil%20maths%20aptitude"
+    "English": {
+      "channel": "YouTube",
+      "title": "Number System",
+      "link": "https://www.youtube.com/watch?v=KSeIr93uxjk"
     }
   },
-  "LCM and HCF": {
-    "Telugu": {
-      "channel": "Maths By Sarada",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Maths%20By%20Sarada%20LCM%20HCF%20Telugu%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Gagan Pratap Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Gagan%20Pratap%20LCM%20HCF%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "Suresh Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Suresh%20Maths%20LCM%20HCF%20Tamil%20aptitude"
+  "HCF and LCM": {
+    "English": {
+      "channel": "YouTube",
+      "title": "HCF and LCM",
+      "link": "https://www.youtube.com/watch?v=xyyejJYeILM"
     }
   },
-  "Simplification & Approximation": {
-    "Telugu": {
-      "channel": "Competitive Reasoning Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Competitive%20Reasoning%20Telugu%20Simplification%20Approximation"
-    },
-    "Hindi": {
-      "channel": "Gagan Pratap Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Gagan%20Pratap%20Simplification%20Approximation%20Hindi"
-    },
-    "Tamil": {
-      "channel": "YP Maths Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=YP%20Maths%20Tamil%20Simplification%20aptitude"
-    }
-  },
-  "Mixtures and Alligations": {
-    "Telugu": {
-      "channel": "Maths By Sarada",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Maths%20By%20Sarada%20Mixtures%20Alligations%20Telugu"
-    },
-    "Hindi": {
-      "channel": "Abhinay Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Abhinay%20Maths%20Mixtures%20Alligations%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "Suresh Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Suresh%20Maths%20Mixtures%20Alligations%20Tamil"
+  "Alligation and Mixture": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Alligation and Mixture",
+      "link": "https://www.youtube.com/watch?v=PQ8ux_3hdT4"
     }
   },
   "Permutation and Combination": {
-    "Telugu": {
-      "channel": "TechBit Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=TechBit%20Telugu%20Permutation%20Combination%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Gagan Pratap Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Gagan%20Pratap%20Permutation%20Combination%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "Kalvi TV",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Kalvi%20TV%20Permutation%20Combination%20Tamil%20maths"
+    "English": {
+      "channel": "YouTube",
+      "title": "Permutation and Combination",
+      "link": "https://www.youtube.com/watch?v=ETiRE7N7pEI"
+    }
+  },
+  "Simplification": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Simplification",
+      "link": "https://www.youtube.com/watch?v=ZuMJFleXmiw"
     }
   },
   "Probability": {
-    "Telugu": {
-      "channel": "Maths By Sarada",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Maths%20By%20Sarada%20Probability%20Telugu%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Abhinay Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Abhinay%20Maths%20Probability%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "Suresh Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Suresh%20Maths%20Probability%20Tamil%20aptitude"
+    "English": {
+      "channel": "YouTube",
+      "title": "Probability",
+      "link": "https://www.youtube.com/watch?v=ximxxERGSUc"
     }
   },
-  "Mensuration": {
-    "Telugu": {
-      "channel": "Competitive Reasoning Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Competitive%20Reasoning%20Telugu%20Mensuration%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Abhinay Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Abhinay%20Maths%20Mensuration%20Hindi%202D%203D%20complete"
-    },
-    "Tamil": {
-      "channel": "YP Maths Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=YP%20Maths%20Tamil%20Mensuration%20aptitude"
+  "Area and Perimeter": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Area and Perimeter",
+      "link": "https://www.youtube.com/watch?v=xwqUyOT-cmU"
     }
   },
-  "Quadratic Equations": {
-    "Telugu": {
-      "channel": "TechBit Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=TechBit%20Telugu%20Quadratic%20Equations%20aptitude"
-    },
-    "Hindi": {
-      "channel": "Gagan Pratap Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Gagan%20Pratap%20Quadratic%20Equations%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "Kalvi TV",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Kalvi%20TV%20Quadratic%20Equations%20Tamil%20maths"
+  "Algebra": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Algebra",
+      "link": "https://www.youtube.com/watch?v=TV9rQm15sWo"
     }
   },
-  "Progressions (AP, GP)": {
-    "Telugu": {
-      "channel": "Maths By Sarada",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Maths%20By%20Sarada%20AP%20GP%20Progressions%20Telugu"
-    },
-    "Hindi": {
-      "channel": "Abhinay Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Abhinay%20Maths%20AP%20GP%20Progressions%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "Suresh Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Suresh%20Maths%20AP%20GP%20Progressions%20Tamil"
+  "Arithmetic Progression": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Arithmetic Progression",
+      "link": "https://www.youtube.com/watch?v=G-gqX4Oo9PA"
     }
   },
-  "Coding-Decoding": {
-    "Telugu": {
-      "channel": "Competitive Reasoning Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Competitive%20Reasoning%20Telugu%20Coding%20Decoding%20tricks"
-    },
-    "Hindi": {
-      "channel": "Reasoning by Amar Sir",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Amar%20Sir%20Coding%20Decoding%20Hindi%20complete%20reasoning"
-    },
-    "Tamil": {
-      "channel": "StudyIQ Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=StudyIQ%20Tamil%20Coding%20Decoding%20reasoning"
+  "Geometric Progression": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Geometric Progression",
+      "link": "https://www.youtube.com/watch?v=rdC4Blp8qmk"
+    }
+  },
+  "Coding and Decoding": {
+    "English": {
+      "channel": "YouTube",
+      "title": "Coding and Decoding",
+      "link": "https://www.youtube.com/watch?v=wwN3mJ-b4FY"
     }
   },
   "Blood Relations": {
-    "Telugu": {
-      "channel": "Competitive Reasoning Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Competitive%20Reasoning%20Telugu%20Blood%20Relations%20tricks"
-    },
-    "Hindi": {
-      "channel": "Reasoning by Amar Sir",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Amar%20Sir%20Blood%20Relations%20Hindi%20reasoning%20complete"
-    },
-    "Tamil": {
-      "channel": "StudyIQ Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=StudyIQ%20Tamil%20Blood%20Relations%20reasoning"
-    }
-  },
-  "Direction Sense": {
-    "Telugu": {
-      "channel": "Competitive Reasoning Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Competitive%20Reasoning%20Telugu%20Direction%20Sense%20tricks"
-    },
-    "Hindi": {
-      "channel": "Reasoning by Amar Sir",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Amar%20Sir%20Direction%20Sense%20Hindi%20reasoning%20complete"
-    },
-    "Tamil": {
-      "channel": "StudyIQ Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=StudyIQ%20Tamil%20Direction%20Sense%20reasoning"
-    }
-  },
-  "Syllogisms": {
-    "Telugu": {
-      "channel": "Competitive Reasoning Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Competitive%20Reasoning%20Telugu%20Syllogism%20tricks"
-    },
-    "Hindi": {
-      "channel": "Reasoning by Amar Sir",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Amar%20Sir%20Syllogism%20Hindi%20Venn%20diagram%20complete"
-    },
-    "Tamil": {
-      "channel": "StudyIQ Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=StudyIQ%20Tamil%20Syllogism%20reasoning"
-    }
-  },
-  "Number/Alphabet Series": {
-    "Telugu": {
-      "channel": "Competitive Reasoning Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Competitive%20Reasoning%20Telugu%20Number%20Alphabet%20Series"
-    },
-    "Hindi": {
-      "channel": "Reasoning by Amar Sir",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Amar%20Sir%20Number%20Series%20Alphabet%20Series%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "StudyIQ Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=StudyIQ%20Tamil%20Number%20Series%20reasoning"
-    }
-  },
-  "Seating Arrangement & Puzzles": {
-    "Telugu": {
-      "channel": "Competitive Reasoning Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Competitive%20Reasoning%20Telugu%20Seating%20Arrangement%20Puzzles"
-    },
-    "Hindi": {
-      "channel": "Reasoning by Amar Sir",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Amar%20Sir%20Seating%20Arrangement%20Puzzles%20Hindi%20complete"
-    },
-    "Tamil": {
-      "channel": "StudyIQ Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=StudyIQ%20Tamil%20Seating%20Arrangement%20Puzzles%20reasoning"
-    }
-  },
-  "Data Interpretation (Bar, Pie, Line, Table)": {
-    "Telugu": {
-      "channel": "TechBit Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=TechBit%20Telugu%20Data%20Interpretation%20Bar%20Pie%20Line%20Table"
-    },
-    "Hindi": {
-      "channel": "Gagan Pratap Maths",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=Gagan%20Pratap%20Data%20Interpretation%20Hindi%20complete%20Bar%20Pie"
-    },
-    "Tamil": {
-      "channel": "YP Maths Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=YP%20Maths%20Tamil%20Data%20Interpretation%20aptitude"
-    }
-  },
-  "Verbal Ability (RC, Grammar, Para Jumbles)": {
-    "Telugu": {
-      "channel": "TechBit Telugu",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=TechBit%20Telugu%20Verbal%20Ability%20English%20Reading%20Comprehension"
-    },
-    "Hindi": {
-      "channel": "TalentSprint Aptitude",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=TalentSprint%20Verbal%20Ability%20Reading%20Comprehension%20Para%20Jumbles%20Hindi"
-    },
-    "Tamil": {
-      "channel": "StudyIQ Tamil",
-      "title": "",
-      "link": "",
-      "duration": "",
-      "level": "",
-      "search": "https://www.youtube.com/results?search_query=StudyIQ%20Tamil%20Verbal%20Ability%20English%20Grammar%20RC"
+    "English": {
+      "channel": "YouTube",
+      "title": "Blood Relations",
+      "link": "https://www.youtube.com/watch?v=LRdLhfDupMU"
     }
   }
 }

@@ -10,7 +10,16 @@ const otpSchema = new mongoose.Schema({
   },
   otpHash: {
     type: String,
-    required: true,
+    default: null,
+  },
+  resetTokenHash: {
+    type: String,
+    default: null,
+  },
+  purpose: {
+    type: String,
+    enum: ['otp', 'password_reset', 'signup', 'signup_verified'],
+    default: 'otp',
   },
   attempts: {
     type: Number,

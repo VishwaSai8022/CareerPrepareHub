@@ -16,7 +16,8 @@ export const notFoundHandler = (req, _res, next) => {
 export const errorHandler = (err, _req, res, _next) => {
   const statusCode = err.statusCode || 500;
   const isOperational = Boolean(err.statusCode && statusCode < 500);
-  const message = isOperational ? err.message : 'Internal server error';
+  const isDev = process.env.NODE_ENV !== 'production';
+  const message = isOperational ? err.message : (isDev ? err.message : 'Internal server error');
 
   if (statusCode >= 500) {
     logger.error(err);
@@ -29,5 +30,6 @@ export const errorHandler = (err, _req, res, _next) => {
     message,
     code: err.code || 'INTERNAL_ERROR',
     ...(err.details ? { details: err.details } : {}),
+    ...(isDev && statusCode >= 500 ? { stack: err.stack } : {}),
   });
 };

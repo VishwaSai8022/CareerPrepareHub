@@ -19,6 +19,30 @@ export const login = asyncHandler(async (req, res) => {
   });
 });
 
+export const googleAuth = asyncHandler(async (req, res) => {
+  const data = await authService.googleAuth(req.body);
+  return sendSuccess(res, {
+    message: data.isNewUser ? 'Google signup successful' : 'Google login successful',
+    data,
+  });
+});
+
+export const sendOtp = asyncHandler(async (req, res) => {
+  const data = await authService.sendOtp(req.body);
+  return sendSuccess(res, {
+    message: data.message,
+    data,
+  });
+});
+
+export const verifyOtp = asyncHandler(async (req, res) => {
+  const data = await authService.verifyOtp(req.body);
+  return sendSuccess(res, {
+    message: data.message,
+    data,
+  });
+});
+
 export const forgotPassword = asyncHandler(async (req, res) => {
   const data = await authService.forgotPassword(req.body);
   return sendSuccess(res, {

@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/navbar-logo.css">
   <link rel="stylesheet" href="../assets/css/auth-modal.css">
   <link rel="stylesheet" href="../assets/css/coding-questions.css">
@@ -44,44 +47,232 @@
   </nav>
 
   <main class="coding-main">
-    <nav class="breadcrumbs" aria-label="Breadcrumb">
-      <a href="home.html">Home</a>
-      <span class="crumb-separator">/</span>
-      <span aria-current="page">Coding Questions</span>
-    </nav>
+    <section class="workspace-shell">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="home.html">Home</a>
+        <span class="crumb-separator">/</span>
+        <span aria-current="page">Coding Questions</span>
+      </nav>
 
-    <header class="page-header">
-      <h1>Coding Questions</h1>
-      <p>Practice 450 interview questions from 30 companies, grouped by company and difficulty.</p>
-    </header>
+      <section class="filters-section workspace-filters">
+        <div class="filter-group">
+          <label for="companyFilter">Company</label>
+          <select id="companyFilter">
+            <option value="all">All Companies</option>
+          </select>
+        </div>
 
-    <section class="filters-section">
-      <div class="filter-group">
-        <label for="companyFilter">Company</label>
-        <select id="companyFilter">
-          <option value="all">All Companies</option>
-        </select>
-      </div>
+        <div class="filter-group">
+          <label for="topicFilter">Topic</label>
+          <select id="topicFilter">
+            <option value="all">All Topics</option>
+          </select>
+        </div>
 
-      <div class="filter-group">
-        <label for="difficultyFilter">Difficulty</label>
-        <select id="difficultyFilter">
-          <option value="all">All Difficulties</option>
-          <option value="Easy">Easy</option>
-          <option value="Medium">Medium</option>
-          <option value="Hard">Hard</option>
-        </select>
-      </div>
+        <div class="filter-group">
+          <label for="difficultyFilter">Difficulty</label>
+          <select id="difficultyFilter">
+            <option value="all">All Difficulties</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+          </select>
+        </div>
+      </section>
 
-      <div class="filter-group search-group">
-        <label for="searchInput">Search Question</label>
-        <input id="searchInput" type="text" placeholder="Search by topic, title, company, or description...">
-      </div>
+      <div class="results-meta" id="resultsMeta">Loading questions...</div>
+
+      <section class="coding-workspace" aria-label="Coding workspace">
+        <section class="workspace-panel split-layout">
+          <section class="problem-panel panel-card">
+            <div class="problem-scrollable">
+              <div class="problem-header-row">
+                <div class="problem-title-block">
+                  <h1 id="problemTitle">Choose a question</h1>
+                </div>
+                <div class="problem-header-meta compact-meta">
+                  <span id="problemCompany" class="company-chip">Company</span>
+                  <span id="problemDifficulty" class="difficulty-badge neutral">Waiting</span>
+                  <span id="activeQuestionStatus" class="question-position">Source ID: --</span>
+                </div>
+              </div>
+
+              <article class="problem-content-card">
+                <section class="problem-section">
+                  <h3>Description</h3>
+                  <p id="problemDescription">Select a question from the active filters.</p>
+                </section>
+
+                <section class="problem-section">
+                  <h3>Constraints</h3>
+                  <pre id="problemConstraints" class="code-block muted-block">Constraints will appear here.</pre>
+                </section>
+
+                <section class="problem-section sample-grid">
+                  <div>
+                    <h3>Sample Input</h3>
+                    <pre id="problemSampleInput" class="code-block">--</pre>
+                  </div>
+                  <div>
+                    <h3>Sample Output</h3>
+                    <pre id="problemSampleOutput" class="code-block">--</pre>
+                  </div>
+                </section>
+
+                <section class="problem-section">
+                  <h3>Explanation</h3>
+                  <p id="problemExplanation">Explanation will appear here when available.</p>
+                </section>
+
+                <section class="problem-section">
+                  <div class="section-title-row">
+                    <h3>Hints</h3>
+                    <button id="toggleHintsBtn" class="ghost-btn" type="button">Show Hints</button>
+                  </div>
+                  <ul id="problemHints" class="hints-list hidden"></ul>
+                </section>
+              </article>
+            </div>
+
+            <div class="question-nav">
+              <button id="prevQuestionBtn" class="nav-btn" type="button">
+                <i class="fa-solid fa-arrow-left"></i>
+                Previous Question
+              </button>
+              <button id="nextQuestionBtn" class="nav-btn" type="button">
+                Next Question
+                <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </section>
+
+          <section class="editor-panel panel-card">
+            <div class="editor-shell">
+              <div class="editor-header" aria-label="Editor header">
+                <div class="editor-header-right minimal-editor-tools">
+                  <label class="language-select-wrap compact-language-selector minimal-language-selector" for="languageSelect">
+                    <select id="languageSelect" aria-label="Select programming language">
+                      <option value="python">Python</option>
+                      <option value="java">Java</option>
+                      <option value="c">C</option>
+                      <option value="cpp">C++</option>
+                      <option value="javascript">JavaScript</option>
+                    </select>
+                  </label>
+
+                  <button id="timerLauncherBtn" class="timer-launcher-btn" type="button" aria-label="Open timer settings">
+                    <i class="fa-solid fa-stopwatch" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div id="monacoLoaderState" class="editor-loading">Loading Monaco Editor...</div>
+              <div id="editorContainer" class="editor-container" aria-label="Code editor"></div>
+
+              <section class="terminal-panel">
+                <div class="terminal-tabs" role="tablist" aria-label="Output tabs">
+                  <button class="terminal-tab active" id="tabTestResult" type="button" data-tab="test-result" role="tab" aria-selected="true">Test Result</button>
+                  <button class="terminal-tab" id="tabOutput" type="button" data-tab="output" role="tab" aria-selected="false">Output</button>
+                  <button class="terminal-tab" id="tabConsole" type="button" data-tab="console" role="tab" aria-selected="false">Console</button>
+                </div>
+
+                <div class="terminal-content compact-terminal-content">
+                  <div id="panelTestResult" class="terminal-view active" role="tabpanel">
+                    <div class="result-summary-grid compact-summary-grid">
+                      <article class="result-stat-card compact-stat-card">
+                        <span>Status</span>
+                        <strong id="submissionStatus">Idle</strong>
+                      </article>
+                      <article class="result-stat-card compact-stat-card">
+                        <span>Runtime</span>
+                        <strong id="submissionRuntime">--</strong>
+                      </article>
+                      <article class="result-stat-card compact-stat-card">
+                        <span>Memory</span>
+                        <strong id="submissionMemory">--</strong>
+                      </article>
+                    </div>
+
+                    <div class="result-table-card">
+                      <div class="result-table-wrap">
+                        <table class="result-summary-table" aria-label="Submission summary">
+                          <thead>
+                            <tr>
+                              <th>Subtask</th>
+                              <th>Result</th>
+                              <th>Score</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td id="summarySubtask">1</td>
+                              <td id="summaryResult">Idle</td>
+                              <td id="summaryScore">--</td>
+                            </tr>
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <td colspan="2">Execution Summary</td>
+                              <td id="summaryFooter">Awaiting execution</td>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="panelOutput" class="terminal-view" role="tabpanel" hidden>
+                    <div class="terminal-blocks compact-terminal-blocks">
+                      <div class="terminal-block compact-terminal-block">
+                        <h4>Custom Input</h4>
+                        <textarea id="customInputEditor" class="custom-input-editor" spellcheck="false" placeholder="Enter custom input here..."></textarea>
+                        <pre id="runInput">--</pre>
+                      </div>
+                      <div class="terminal-block grid-two compact-grid-two">
+                        <div>
+                          <h4>Expected Output</h4>
+                          <pre id="expectedOutput">--</pre>
+                        </div>
+                        <div>
+                          <h4>Your Output</h4>
+                          <pre id="userOutput">--</pre>
+                        </div>
+                      </div>
+                      <div class="terminal-block compact-terminal-block">
+                        <h4>Execution Result</h4>
+                        <pre id="executionResult">Run or submit code to view results.</pre>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="panelConsole" class="terminal-view" role="tabpanel" hidden>
+                    <div class="terminal-block full-height compact-terminal-block">
+                      <h4>Output & Errors</h4>
+                      <pre id="consoleOutput">Console output will appear here.</pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="editor-actions">
+                  <button id="runCodeBtn" class="action-btn secondary" type="button">
+                    <i class="fa-solid fa-play"></i>
+                    Run
+                  </button>
+                  <button id="submitCodeBtn" class="action-btn primary" type="button">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Submit
+                  </button>
+                  <button id="nextAfterSubmitBtn" class="action-btn success hidden" type="button">
+                    <i class="fa-solid fa-forward"></i>
+                    Next Question
+                  </button>
+                </div>
+              </section>
+            </div>
+          </section>
+        </section>
+      </section>
     </section>
-
-    <div class="results-meta" id="resultsMeta">Loading questions...</div>
-
-    <section id="questionsContainer" class="questions-container"></section>
 
     <div id="premiumModal" class="premium-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="premiumTitle">
       <div class="premium-modal-backdrop" data-close-premium="true"></div>
@@ -107,9 +298,36 @@
         <button id="payNowBtn" class="pay-now-btn" type="button">Pay Now</button>
       </div>
     </div>
+
+    <div id="timeUpModal" class="time-up-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="timeUpTitle">
+      <div class="time-up-modal-backdrop" data-close-time-up="true"></div>
+      <div class="time-up-modal-card">
+        <h3 id="timeUpTitle">Time's Up</h3>
+        <p>Your timer has ended. The editor is now read-only. You can still submit your current solution.</p>
+        <div class="time-up-actions">
+          <button id="timeUpSubmitBtn" class="action-btn primary" type="button">Submit Solution</button>
+          <button id="timeUpRetryBtn" class="action-btn success" type="button">Retry</button>
+          <button id="timeUpCloseBtn" class="action-btn secondary" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="timerSetupModal" class="timer-setup-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="timerSetupTitle">
+      <div class="timer-setup-backdrop" data-close-timer-setup="true"></div>
+      <div class="timer-setup-card">
+        <h3 id="timerSetupTitle">Set Timer</h3>
+        <input id="timerMinutesInput" type="number" min="1" step="1" placeholder="Enter minutes" aria-label="Timer in minutes">
+        <div class="timer-setup-actions">
+          <button id="timerStartBtn" class="action-btn primary" type="button">Start</button>
+          <button id="timerStopBtn" class="action-btn secondary" type="button">Stop</button>
+        </div>
+      </div>
+    </div>
+
   </main>
 
   <script src="../assets/js/navbar-logo.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.45.0/min/vs/loader.min.js"></script>
   <script src="../assets/js/coding-questions.js"></script>
   <script src="../assets/js/auth-gate.js"></script>
 </body>

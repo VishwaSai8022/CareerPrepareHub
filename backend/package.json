@@ -7,15 +7,20 @@
   "scripts": {
     "dev": "node --watch server.js",
     "start": "node server.js",
+    "worker:submission": "node src/workers/submission.worker.js",
     "seed": "node scripts/seed.js",
+    "merge:hidden-tests": "node scripts/merge-hidden-testcases.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bullmq": "^5.10.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-rate-limit": "^7.4.1",
+    "google-auth-library": "^9.15.1",
+    "ioredis": "^5.4.1",
     "helmet": "^8.0.0",
     "hpp": "^0.2.3",
     "joi": "^17.13.3",

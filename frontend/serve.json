@@ -1,0 +1,10 @@
+{
+  "public": ".",
+  "rewrites": [
+    { "source": "/", "destination": "/pages/home.html" },
+    { "source": "/login", "destination": "/pages/login.html" },
+    { "source": "/signup", "destination": "/pages/signup.html" },
+    { "source": "/aptitude", "destination": "/pages/aptitude.html" },
+    { "source": "/coding", "destination": "/pages/coding-questions.html" }
+  ]
+}

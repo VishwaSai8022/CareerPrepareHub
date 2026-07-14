@@ -123,6 +123,7 @@ export const getCodingList = async (query = {}) => {
   return { items: safeItems, total, page, limit };
 };
 
+
 export const getCodingById = async ({ id, user }) => {
   const question = await CodingQuestion.findById(id).lean();
   if (!question) throw new ApiError('Coding question not found', 404, 'CODING_NOT_FOUND');
@@ -131,5 +132,39 @@ export const getCodingById = async ({ id, user }) => {
     throw new ApiError('Paid plan required to access this resource', 403, 'PAID_PLAN_REQUIRED');
   }
 
+  // ── Validate sourceId bounds ──────────────────────────────────────────────
+  // sourceId must be in range 358–447. Questions outside this range are treated
+  // as data integrity issues and are not served to clients.
+  const SOURCE_ID_MIN = 358;
+  const SOURCE_ID_MAX = 447;
+  if (question.sourceId != null) {
+    if (question.sourceId > SOURCE_ID_MAX) {
+      throw new ApiError(
+        `Question sourceId ${question.sourceId} exceeds the maximum allowed value of ${SOURCE_ID_MAX}. Run the fix-sourceids script to resolve data integrity issues.`,
+        422,
+        'SOURCE_ID_OVERFLOW',
+      );
+    }
+    if (question.sourceId < SOURCE_ID_MIN) {
+      throw new ApiError(
+        `Question sourceId ${question.sourceId} is below the minimum allowed value of ${SOURCE_ID_MIN}.`,
+        422,
+        'SOURCE_ID_UNDERFLOW',
+      );
+    }
+  }
+
+  // ── Strip hidden test cases from API response ─────────────────────────────
+  // Hidden test cases are executed on the backend during submit, but their
+  // input/output data must NEVER be exposed to the client. Only visible
+  // (isHidden: false) test cases are included in the response — and even those
+  // are sanitised to remove internal comparator configuration.
+  if (Array.isArray(question.testCases)) {
+    question.testCases = question.testCases
+      .filter((tc) => !tc.isHidden)               // Remove hidden cases entirely
+      .map(({ input, output }) => ({ input, output })); // Strip internal fields
+  }
+
   return question;
 };
+

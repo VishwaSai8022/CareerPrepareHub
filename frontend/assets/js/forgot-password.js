@@ -15,6 +15,71 @@ let currentEmail = '';
 let currentOtp = '';
 let resendCountdown = 0;
 let isResending = false;
+let emailTimerInterval = null;
+let isOtpVerified = false;
+let resetToken = '';
+const sendOtpBtn = document.getElementById('sendOtpBtn');
+const verifyOtpBtn = document.getElementById('verifyOtpBtn');
+const emailFeedback = document.getElementById('emailFeedback');
+const otpFeedback = document.getElementById('otpFeedback');
+const resetFeedback = document.getElementById('resetFeedback');
+const resetRuleLength = document.getElementById('resetRuleLength');
+const resetRuleUpper = document.getElementById('resetRuleUpper');
+const resetRuleLower = document.getElementById('resetRuleLower');
+const resetRuleNumber = document.getElementById('resetRuleNumber');
+const resetRuleSpecial = document.getElementById('resetRuleSpecial');
+
+const passwordRules = {
+  length: (value) => value.length >= 8,
+  upper: (value) => /[A-Z]/.test(value),
+  lower: (value) => /[a-z]/.test(value),
+  number: (value) => /\d/.test(value),
+  special: (value) => /[^A-Za-z\d]/.test(value),
+};
+
+function setFeedback(element, message, type = 'info') {
+  if (!element) return;
+  element.textContent = message;
+  element.className = `feedback ${type}`;
+}
+
+function clearFeedback(element) {
+  if (!element) return;
+  element.textContent = '';
+  element.className = 'feedback hidden';
+}
+
+function setButtonLoading(button, isLoading, loadingText, defaultText) {
+  if (!button) return;
+  button.disabled = isLoading;
+  button.textContent = isLoading ? loadingText : defaultText;
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).trim().toLowerCase());
+}
+
+function setRuleState(element, isValid) {
+  if (!element) return;
+  element.classList.toggle('valid', isValid);
+  element.classList.toggle('invalid', !isValid);
+}
+
+function updateResetPasswordChecklist() {
+  const value = newPassword?.value || '';
+  setRuleState(resetRuleLength, passwordRules.length(value));
+  setRuleState(resetRuleUpper, passwordRules.upper(value));
+  setRuleState(resetRuleLower, passwordRules.lower(value));
+  setRuleState(resetRuleNumber, passwordRules.number(value));
+  setRuleState(resetRuleSpecial, passwordRules.special(value));
+}
+
+function isPasswordStrong(value) {
+  return Object.values(passwordRules).every((rule) => rule(value));
+}
+
+newPassword?.addEventListener('input', updateResetPasswordChecklist);
+updateResetPasswordChecklist();
 
 // Password visibility toggle
 const togglePasswordButtons = document.querySelectorAll('.toggle-password');
@@ -46,8 +111,16 @@ emailForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   currentEmail = emailInput.value.trim().toLowerCase();
 
+  clearFeedback(emailFeedback);
+
+  if (!isValidEmail(currentEmail)) {
+    setFeedback(emailFeedback, 'Please enter a valid email address.', 'error');
+    return;
+  }
+
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
+    setButtonLoading(sendOtpBtn, true, 'Sending OTP...', 'Send OTP');
+    const response = await fetch(`${API_BASE_URL}/auth/send-otp`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: currentEmail }),
@@ -58,13 +131,15 @@ emailForm.addEventListener('submit', async (e) => {
       throw new Error(result.message || 'Unable to send OTP');
     }
 
-    alert('OTP sent to your email. Please check inbox/spam.');
+    setFeedback(emailFeedback, 'OTP sent successfully. Please check your email inbox/spam.', 'success');
     emailDisplay.textContent = `Email: ${currentEmail}`;
     resendCountdown = 60;
     startResendTimer();
     showStep(2);
   } catch (error) {
-    alert(error.message || 'Unable to send OTP right now.');
+    setFeedback(emailFeedback, error.message || 'Unable to send OTP right now.', 'error');
+  } finally {
+    setButtonLoading(sendOtpBtn, false, 'Sending OTP...', 'Send OTP');
   }
 });
 
@@ -72,14 +147,38 @@ emailForm.addEventListener('submit', async (e) => {
 otpForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const enteredOTP = otpInput.value.trim();
+  clearFeedback(otpFeedback);
 
   if (enteredOTP.length !== 6 || isNaN(enteredOTP)) {
-    alert('Please enter a valid 6-digit OTP');
+    setFeedback(otpFeedback, 'Please enter a valid 6-digit OTP.', 'error');
     return;
   }
 
-  currentOtp = enteredOTP;
-  showStep(3);
+  try {
+    setButtonLoading(verifyOtpBtn, true, 'Verifying...', 'Verify OTP');
+    const response = await fetch(`${API_BASE_URL}/auth/verify-otp`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: currentEmail, otp: enteredOTP }),
+    });
+
+    const result = await response.json();
+    if (!response.ok) {
+      throw new Error(result.message || 'Unable to verify OTP');
+    }
+
+    currentOtp = enteredOTP;
+    isOtpVerified = true;
+    resetToken = result?.data?.resetToken || '';
+    setFeedback(otpFeedback, 'OTP verified successfully.', 'success');
+    setTimeout(() => {
+      showStep(3);
+    }, 500);
+  } catch (error) {
+    setFeedback(otpFeedback, error.message || 'Unable to verify OTP right now.', 'error');
+  } finally {
+    setButtonLoading(verifyOtpBtn, false, 'Verifying...', 'Verify OTP');
+  }
 });
 
 // Reset password form submission
@@ -87,14 +186,20 @@ resetForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const password = newPassword.value;
   const confirmPass = confirmPassword.value;
+  clearFeedback(resetFeedback);
 
-  if (password.length < 6) {
-    alert('Password must be at least 6 characters long');
+  if (!isOtpVerified) {
+    setFeedback(resetFeedback, 'Please verify your OTP before resetting the password.', 'error');
+    return;
+  }
+
+  if (!isPasswordStrong(password)) {
+    setFeedback(resetFeedback, 'Please satisfy all password conditions before resetting your password.', 'error');
     return;
   }
 
   if (password !== confirmPass) {
-    alert('Passwords do not match!');
+    setFeedback(resetFeedback, 'Passwords do not match.', 'error');
     return;
   }
 
@@ -104,7 +209,7 @@ resetForm.addEventListener('submit', async (e) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         email: currentEmail,
-        otp: currentOtp,
+        resetToken,
         password,
       }),
     });
@@ -114,13 +219,13 @@ resetForm.addEventListener('submit', async (e) => {
       throw new Error(result.message || 'Unable to reset password');
     }
 
-    alert('Password reset successfully!');
+    setFeedback(resetFeedback, 'Password reset successfully.', 'success');
     showStep(4);
     setTimeout(() => {
       window.location.href = 'login.html';
     }, 2000);
   } catch (error) {
-    alert(error.message || 'Unable to reset password right now.');
+    setFeedback(resetFeedback, error.message || 'Unable to reset password right now.', 'error');
   }
 });
 
@@ -133,8 +238,9 @@ resendBtn.addEventListener('click', async (e) => {
   }
 
   isResending = true;
+  clearFeedback(otpFeedback);
   try {
-    const response = await fetch(`${API_BASE_URL}/auth/forgot-password`, {
+    const response = await fetch(`${API_BASE_URL}/auth/send-otp`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: currentEmail }),
@@ -145,14 +251,14 @@ resendBtn.addEventListener('click', async (e) => {
       throw new Error(result.message || 'Unable to resend OTP');
     }
 
-    alert('New OTP sent to your email. Please check inbox/spam.');
+    setFeedback(otpFeedback, 'A new OTP has been sent to your email.', 'success');
 
     resendCountdown = 60;
     startResendTimer();
     otpInput.value = '';
     otpInput.focus();
   } catch (error) {
-    alert(error.message || 'Unable to resend OTP right now.');
+    setFeedback(otpFeedback, error.message || 'Unable to resend OTP right now.', 'error');
   } finally {
     isResending = false;
   }
@@ -160,16 +266,21 @@ resendBtn.addEventListener('click', async (e) => {
 
 // Resend timer
 function startResendTimer() {
+  if (emailTimerInterval) {
+    clearInterval(emailTimerInterval);
+  }
+
   resendBtn.classList.add('disabled');
   resendBtn.style.pointerEvents = 'none';
   resendBtn.style.opacity = '0.5';
 
-  const interval = setInterval(() => {
+  emailTimerInterval = setInterval(() => {
     resendCountdown--;
     if (resendCountdown > 0) {
       resendTimer.textContent = `(${resendCountdown}s)`;
     } else {
-      clearInterval(interval);
+      clearInterval(emailTimerInterval);
+      emailTimerInterval = null;
       resendBtn.classList.remove('disabled');
       resendBtn.style.pointerEvents = 'auto';
       resendBtn.style.opacity = '1';

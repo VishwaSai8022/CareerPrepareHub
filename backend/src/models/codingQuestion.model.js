@@ -1,6 +1,83 @@
-import mongoose from 'mongoose';const testCaseSchema = new mongoose.Schema({
+import mongoose from 'mongoose';
+
+const testCaseSchema = new mongoose.Schema({
   input: { type: String, required: true, trim: true },
   output: { type: String, required: true, trim: true },
+  isHidden: { type: Boolean, default: false },
+  comparison: {
+    ignoreWhitespace: { type: Boolean, default: true },
+    unordered: { type: Boolean, default: false },
+  },
+}, { _id: false });
+
+const executionParameterSchema = new mongoose.Schema({
+  name: { type: String, required: true, trim: true },
+  type: { type: String, required: true, trim: true },
+}, { _id: false });
+
+const languageExecutionSchema = new mongoose.Schema({
+  entryClass: {
+    type: String,
+    trim: true,
+    default: 'Solution',
+  },
+  methodName: {
+    type: String,
+    trim: true,
+    default: '',
+  },
+  returnType: {
+    type: String,
+    trim: true,
+    default: 'void',
+  },
+  parameters: {
+    type: [executionParameterSchema],
+    default: [],
+  },
+  helperTypes: {
+    type: [String],
+    default: [],
+  },
+  enableMethodDetectionFallback: {
+    type: Boolean,
+    default: true,
+  },
+  comparator: {
+    mode: {
+      type: String,
+      enum: ['exact', 'ignore_whitespace', 'float_tolerance', 'unordered_array', 'custom'],
+      default: 'ignore_whitespace',
+    },
+    tolerance: {
+      type: Number,
+      default: 0.000001,
+    },
+    customKey: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+  },
+}, { _id: false });
+
+const executionSchema = new mongoose.Schema({
+  java: {
+    type: languageExecutionSchema,
+    default: () => ({ entryClass: 'Solution' }),
+  },
+  python: {
+    type: languageExecutionSchema,
+    default: () => ({ entryClass: 'Solution' }),
+  },
+  cpp: {
+    type: languageExecutionSchema,
+    default: () => ({ entryClass: 'Solution' }),
+  },
+  javascript: {
+    type: languageExecutionSchema,
+    default: () => ({}),
+  },
 }, { _id: false });
 
 const codingQuestionSchema = new mongoose.Schema({
@@ -69,6 +146,10 @@ const codingQuestionSchema = new mongoose.Schema({
   testCases: {
     type: [testCaseSchema],
     default: [],
+  },
+  execution: {
+    type: executionSchema,
+    default: () => ({}),
   },
   isPremium: {
     type: Boolean,

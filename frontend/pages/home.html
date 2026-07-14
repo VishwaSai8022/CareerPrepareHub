@@ -84,18 +84,19 @@
   <main>
     <!-- Home Section -->
     <section id="home" class="section home-section">
-      <div class="hero">
+      <div class="hero container">
         <div class="hero-content">
           <h1>Welcome to Career Prepare Hub</h1>
           <div class="quotes-container">
-            <div class="typing-container">
+            <div class="typing-container hero-subtitle-container" aria-live="polite">
               <span id="typing-text"></span>
-              <span class="cursor"></span>
+              <span class="cursor hero-subtitle-cursor"></span>
             </div>
           </div>
+
           <div class="hero-stats">
             <div class="stat">
-              <h3>400+</h3>
+              <h3>500+</h3>
               <p>Coding Questions</p>
             </div>
             <div class="stat">
@@ -111,9 +112,64 @@
               <p>Aptitude Questions</p>
             </div>
           </div>
+
+          <div class="hero-actions">
+            <a href="coding-questions.html" class="hero-btn hero-btn-primary">Start Practicing 🚀</a>
+          </div>
         </div>
-        <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1000&q=80" alt="Students and developers learning together">
+
+        <div class="hero-image hero-editor-panel">
+          <div class="editor-shell" aria-label="Animated Java coding editor preview">
+            <div class="student-illustration" aria-hidden="true">
+              <img
+                src="../assets/images/student-on-terminal-clean.png"
+                alt=""
+                class="student-img"
+                draggable="false"
+              />
+              <span class="student-contact-shadow"></span>
+              <span class="student-leg-shadow"></span>
+            </div>
+            <div class="editor-glow"></div>
+            <div class="editor-topbar">
+              <div class="editor-controls" aria-hidden="true">
+                <span class="control-dot red"></span>
+                <span class="control-dot yellow"></span>
+                <span class="control-dot green"></span>
+              </div>
+              <div class="editor-filename">
+                <i class="fa-solid fa-file-code"></i>
+                <span>career.java</span>
+              </div>
+              <div class="editor-status">LIVE</div>
+            </div>
+
+            <div class="editor-body">
+              <div class="editor-sidebar" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+
+              <div class="editor-code-wrap">
+                <div class="editor-code-header">
+                  <span class="editor-tab active">career.java</span>
+                  <span class="editor-tab">output</span>
+                </div>
+
+                <div class="editor-code-area">
+                  <div id="code-lines" class="code-lines" aria-hidden="true"></div>
+                  <pre id="code-typing" class="code-typing" aria-label="Typing Java code preview"></pre>
+                </div>
+              </div>
+            </div>
+
+            <div class="editor-footer">
+              <span><i class="fa-solid fa-code-branch"></i> main</span>
+              <span><i class="fa-solid fa-circle-check"></i> Java ready</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -234,8 +290,7 @@
         </div>
         <div class="footer-section">
           <h3>Contact</h3>
-          <p>Email: support@careerpreparehub.com</p>
-          <p>Phone: +1 (555) 123-4567</p>
+          <p>Email: vishwa.bathineni@gmail.com</p>
         </div>
       </div>
       <div class="footer-bottom">
